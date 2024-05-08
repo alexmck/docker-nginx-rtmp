@@ -20,7 +20,7 @@ docker build -t nginx-rtmp .
 docker run -p 1935:1935 -p 8080:8080 -v $(pwd)/recordings:/mnt/recordings -v $(pwd)/recordings:/mnt/recordings-delay -v $(pwd)/hls:/mnt/hls -v $(pwd)/hls:/mnt/hls-delay nginx-rtmp
 ```
 
-Also start the local server which is used to "authenticate" the stream. In this particular case, we use this to add an artificial delay to starting a stream.
+Also start the local server in a new terminal window which is used to "authenticate" the stream. In this particular case, we use this to add an artificial delay to starting a stream.
 
 ```sh
 node server.js
