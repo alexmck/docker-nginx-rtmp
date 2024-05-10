@@ -44,6 +44,10 @@ To stream with a simulated delay of 2000 ms before the `NetStream.Connect.Succes
 
 Or combined, `rtmp://127.0.0.1/delay/PickAnyStreamKey`
 
+### Streaming with an iPhone
+
+If you are streaming with an iPhone you will need to replace 127.0.0.1 with the IP of your local machine that is running the Docker container.
+
 ## Recordings
 
 Once you have finished streaming, the recorded FLV file will be in the `recordings` folder, and all `.ts` video segments and the playlist file will be in the `hls` folder.

@@ -14,6 +14,7 @@ function sendResponse(response, statusCode, content = null) {
 const server = http.createServer((req, res) => {
 	
 	if (req.url === '/ok') {
+		// Disabled currently in the nginx.conf
 		console.log('/ok hit')
 		sendResponse(res, 204)
 	} else if (req.url === '/delay') {
