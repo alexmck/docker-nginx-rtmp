@@ -1,8 +1,8 @@
 # Use an official Ubuntu runtime as a parent image
 FROM ubuntu:22.04
 
-ENV NGINX_VERSION nginx-1.23.2
-ENV NGINX_RTMP_MODULE_VERSION 1.2.2-r1
+ENV NGINX_VERSION=nginx-1.23.2
+ENV NGINX_RTMP_MODULE_VERSION=1.2.2-r1
 
 RUN apt-get update && \
 	apt-get -y install gcc make libpcre3 libpcre3-dev libssl-dev zlib1g-dev wget && \
