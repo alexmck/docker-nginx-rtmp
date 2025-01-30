@@ -6,7 +6,8 @@
 		<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 	</head>
 	<body>
-		<h1>Docker nginx RTMP</h1>
+		<h1>Watch Live Stream</h1>
+		<div id="instructions"></div>
         <div id="video-container"></div>
         <script>
             function getQueryStringParameter(name) {
@@ -36,6 +37,9 @@
                         video.play();
                     });
                 }
+            } else {
+                const instructions = document.getElementById('instructions');
+                instructions.innerHTML = '<p>Please provide a key in the URL to watch the live stream. Example: <code>?key=your-stream-key</code></p>';
             }
         </script>
 	</body>
