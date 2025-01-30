@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Docker nginx RTMP</title>
+		<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+	</head>
+	<body>
+		<h1>Docker nginx RTMP</h1>
+        <div id="video-container"></div>
+        <script>
+            function getQueryStringParameter(name) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(name);
+            }
+
+            const key = getQueryStringParameter('key');
+            if (key) {
+                const videoContainer = document.getElementById('video-container');
+                const video = document.createElement('video');
+                video.controls = true;
+                video.width = 640;
+                video.height = 360;
+                videoContainer.appendChild(video);
+
+                if (Hls.isSupported()) {
+                    const hls = new Hls();
+                    hls.loadSource(`http://localhost:8080/hls/${key}.m3u8`);
+                    hls.attachMedia(video);
+                    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                        video.play();
+                    });
+                } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                    video.src = `http://localhost:8080/hls/${key}.m3u8`;
+                    video.addEventListener('canplay', function () {
+                        video.play();
+                    });
+                }
+            }
+        </script>
+	</body>
+</html>
