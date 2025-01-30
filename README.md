@@ -17,7 +17,7 @@ To run this Docker container, please use the following commands:
 
 ```sh
 docker build -t nginx-rtmp .
-docker run -p 1935:1935 -p 8080:8080 -v $(pwd)/recordings:/mnt/recordings -v $(pwd)/recordings:/mnt/recordings-delay -v $(pwd)/hls:/mnt/hls -v $(pwd)/hls:/mnt/hls-delay nginx-rtmp
+docker run -p 1935:1935 -p 8080:8080 -v $(pwd)/recordings:/mnt/recordings -v $(pwd)/recordings:/mnt/recordings-delay -v $(pwd)/hls:/mnt/hls -v $(pwd)/hls:/mnt/hls-delay -v $(pwd)/www:/mnt/www nginx-rtmp
 ```
 
 Also start the local server in a new terminal window which is used to "authenticate" the stream. In this particular case, we use this to add an artificial delay to starting a stream.
@@ -51,3 +51,7 @@ If you are streaming with an iPhone you will need to replace 127.0.0.1 with the 
 ## Recordings
 
 Once you have finished streaming, the recorded FLV file will be in the `recordings` folder, and all `.ts` video segments and the playlist file will be in the `hls` folder.
+
+## Watching Live
+
+To watch the stream live, point your browser to `http://localhost:8080/www/?key=$StreamKey`. Make sure you replace `$StreamKey` with which ever stream key you have selected. This will allow you to watch the stream in real time.
